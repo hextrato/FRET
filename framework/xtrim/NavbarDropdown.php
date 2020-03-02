@@ -43,7 +43,7 @@
 			return $this;
 		}
 		function setCaption (string $caption) {
-			$this->_xlink->tagLink()->setInnerHtml($caption);
+			$this->_xlink->tagLink()->setInnerContent($caption);
 			return $this;
 		}
 
@@ -51,7 +51,7 @@
 			$option = Tag::_new("a");
 			$option->setClass("dropdown-item");
 			$option->set("href",$url);
-			$option->setInnerHtml($caption);
+			$option->setInnerContent($caption);
 			$this->_tagdropdown->add($option);
 			return $this;
 		}

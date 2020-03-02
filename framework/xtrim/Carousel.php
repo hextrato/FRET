@@ -43,7 +43,7 @@
 				->add(
 					Tag::_new("span")
 						->setClass(["sr-only"])
-						->setInnerHtml("Previous")
+						->setInnerContent("Previous")
 				)
 			;
 
@@ -63,7 +63,7 @@
 				->add(
 					Tag::_new("span")
 						->setClass(["sr-only"])
-						//->setInnerHtml("Next")
+						//->setInnerContent("Next")
 				)
 			;
 

@@ -27,7 +27,7 @@
         }
 		
 		function setOption( string $option ) {
-			$this->tagOption()->setInnerHtml($option);
+			$this->tagOption()->setInnerContent($option);
 			return $this;
 		}
 

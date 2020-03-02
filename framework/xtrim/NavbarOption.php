@@ -28,7 +28,7 @@
 			return $this;
 		}
 		function setCaption (string $caption) {
-			$this->_xlink->tagLink()->setInnerHtml($caption);
+			$this->_xlink->tagLink()->setInnerContent($caption);
 			return $this;
 		}
 
