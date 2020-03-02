@@ -15,12 +15,12 @@
 			$o = new NavbarSearch($id, __CLASS__);
 		
 			$o->_tagform = Tag::_new("form");
-			$o->_tagform->css()->set(["fret-navbar-search-form","form-inline","my-2","my-lg-0"]);
+			$o->_tagform->setClass(["fret-navbar-search-form","form-inline","my-2","my-lg-0"]);
 			$o->_tagform
 				->set("method","post")
 			;
 			$o->_taginput = Tag::_new("input");
-			$o->_taginput->css()->set(["form-control","mr-sm-2"]);
+			$o->_taginput->setClass(["form-control","mr-sm-2"]);
 			$o->_taginput
 				->set("type","search")
 				->set("placeholder","Search")
@@ -30,7 +30,7 @@
 			;
 
 			$o->_tagbutton = Tag::_new("button");
-			$o->_tagbutton->css()->set(["btn","btn-outline-success","my-2","my-sm-0"]);
+			$o->_tagbutton->setClass(["btn","btn-outline-success","my-2","my-sm-0"]);
 			$o->_tagbutton
 				->set("type","submit")
 				->setInnerHtml("Search")

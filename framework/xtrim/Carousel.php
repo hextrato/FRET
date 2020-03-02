@@ -18,22 +18,22 @@
 			$o = new Carousel ($id, __CLASS__);
 
 			$o->_tagframe = Tag::_new("div",$id);
-			$o->_tagframe->css()->set(["carousel","slide","carousel-fade"]);
+			$o->_tagframe->setClass(["carousel","slide","carousel-fade"]);
 			$o->_tagframe->set("data-ride","carousel");
 			//$o->_tagframe->set("style","height:128px;");
 
 			$o->_taginner = Tag::_new("div");
-			$o->_taginner->css()->set(["carousel-inner"]);
+			$o->_taginner->setClass(["carousel-inner"]);
 
 			$o->_tagindic = Tag::_new("ol");
-			$o->_tagindic->css()->set(["carousel-indicators"]);
+			$o->_tagindic->setClass(["carousel-indicators"]);
 
 			$o->_tagcontrolleft = Tag::_new("a");
 			$o->_tagcontrolleft->set("href","#$id");
 			$o->_tagcontrolleft->set("role","button");
 			$o->_tagcontrolleft->set("data-slide","prev");
 			$o->_tagcontrolleft->setTemplate("Fully");
-			$o->_tagcontrolleft->css()->set(["data-slide","carousel-control-prev"]);
+			$o->_tagcontrolleft->setClass(["data-slide","carousel-control-prev"]);
 			$o->_tagcontrolleft
 				->add(
 					Tag::_new("span")
@@ -52,7 +52,7 @@
 			$o->_tagcontrolright->set("role","button");
 			$o->_tagcontrolright->set("data-slide","next");
 			$o->_tagcontrolright->setTemplate("Fully");
-			$o->_tagcontrolright->css()->set(["data-slide","carousel-control-next"]);
+			$o->_tagcontrolright->setClass(["data-slide","carousel-control-next"]);
 			$o->_tagcontrolright
 				->add(
 					Tag::_new("span")
@@ -85,7 +85,7 @@
 				$this->_theIndicItems[$i]->set("data-target","#$id");
 				$this->_theIndicItems[$i]->set("data-slide-to","$i");
 				$this->_theIndicItems[$i]->setTemplate("Linea");
-				if ($i == 0) $this->_theIndicItems[$i]->css()->set(["active"]);
+				if ($i == 0) $this->_theIndicItems[$i]->setClass(["active"]);
 				$this->_tagindic->add( $this->_theIndicItems[$i] );
 				$this->add($item);
 				$this->_noIndicItems++;

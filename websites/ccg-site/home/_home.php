@@ -27,7 +27,7 @@
 			\fret\xtrim\Tag::_new("br")->setInnerHtml("University of Pennsylvania")
 		)
 	;
-	$appCarouselItem1->tagFrame()->css()->add(["active"]);
+	$appCarouselItem1->tagFrame()->setClass("active");
 
 	$appCarouselItem2 = \fret\xtrim\CarouselItem::_new("appMainCarouselItem2");
 	$appCarouselItem2->setImage($_BASE_."_img/carousel-2.jpg");

@@ -12,12 +12,12 @@
         static function _new( string $id ) : AbstractContainer {
 			$o = new NavbarOption($id, __CLASS__);
 			$o->_tagoption = Tag::_new("li");
-			$o->_tagoption->css()->set(["fret-navbar-option","nav-item","active"]);
+			$o->_tagoption->setClass(["fret-navbar-option","nav-item","active"]);
 			$o->setRootTag( $o->_tagoption );
 			$o->setInnerChildren( $o->_tagoption );
 
 			$o->_xlink = Link::_new("");
-			$o->_xlink->tagLink()->css()->set("nav-link");
+			$o->_xlink->tagLink()->setClass("nav-link");
 			$o->add( $o->_xlink );
 			
 			return $o;

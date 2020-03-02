@@ -8,9 +8,9 @@
 	$myAppNavbarLogoLink = \fret\xtrim\Link::_new("myAppNavbarLogoLink");
 	$myAppNavbarLogoLink->setURL($_BASE_);
 	$myAppNavbarLogoLink->add($myAppNavbarLogo);
-	$myAppNavbarLogoLink->tagLink()->css()->add(["navbar-brand"]);
+	$myAppNavbarLogoLink->tagLink()->setClass(["navbar-brand"]);
 
-	$myAppNavbarTitle = \fret\xtrim\NavbarTitle::_new("myAppNavbarTitle")->setTitle("CCG Demos");
+	$myAppNavbarTitle = \fret\xtrim\NavbarTitle::_new("myAppNavbarTitle")->setTitle("Cognitive Computation Group");
 	
 	/*
 	$myAppNavbarMenu = \fret\xtrim\NavbarMenu::_new("myAppNavbarMenu");
