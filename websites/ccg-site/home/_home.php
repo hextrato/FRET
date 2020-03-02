@@ -124,27 +124,31 @@
 	;
 	$appMain->add ( $appCCG );
 
+	$news_1=\fret\xtrim\NewsHeadline::_new("News1")
+				->setTitle("Postdoc Opportunity")
+				->setIntro("The Cognitive Computation Group is looking for a postdoctoral researcher in natural language understanding, machine learning, knowledge acquisition, and reasoning.");
+
+	$news_2=\fret\xtrim\NewsHeadline::_new("News2")
+				->setTitle("Curator Demo")
+				->setIntro("We are happy to announce the Curator Demo is back to work.");
+	$news_2->tagIntro()
+		->setStyle("color","darkblue")
+		->setStyle("font-weight","bold")
+		;
+	
+	$news_3=\fret\xtrim\NewsHeadline::_new("News3")
+				->setTitle("Next week...")
+				->setIntro("Would you like to know what is about to by announced?");
+
 	$appNews = \fret\xtrim\Infobox::_new("appMainNews");
 	$appNews
 		//->add (
 		//	\fret\xtrim\FTitleH3::_new("appMainNewsTitle")
 		//		->setTitle("Latest news...")
 		//)
-		->add (
-			\fret\xtrim\NewsHeadline::_new("News1")
-				->setTitle("Postdoc Opportunity")
-				->setIntro("The Cognitive Computation Group is looking for a postdoctoral researcher in natural language understanding, machine learning, knowledge acquisition, and reasoning.")
-		)
-		->add (
-			\fret\xtrim\NewsHeadline::_new("News2")
-				->setTitle("Curator Demo")
-				->setIntro("We are happy to announce the Curator Demo is back to work.")
-		)
-		->add (
-			\fret\xtrim\NewsHeadline::_new("News3")
-				->setTitle("Next week...")
-				->setIntro("Would you like to know what is about to by announced?")
-		)
+		->add ( $news_1	)
+		->add ( $news_2	)
+		->add ( $news_3	)
 	;
 	$appMain->add ( $appNews );
 	
