@@ -11,8 +11,8 @@
 			$o = new Navbar ($id, __CLASS__);
 			$o->_tagnav = Tag::_new("nav");
 			$o->setRootTag( $o->_tagnav );
-			$o->_tagnav->css()->set("fret-navbar");
-			$o->_tagnav->css()->add(["border","navbar","navbar-expand-xl","navbar-light","bg-light","mb-4"]);
+			$o->_tagnav->setClass("fret-navbar");
+			$o->_tagnav->setClass(["border","navbar","navbar-expand-xl","navbar-light","bg-light","mb-4"]);
 
 			$o->setInnerChildren( $o->_tagnav );
   

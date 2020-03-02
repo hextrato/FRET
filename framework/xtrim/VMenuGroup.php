@@ -14,7 +14,7 @@
         static function _new( string $id ) : AbstractContainer {
 			$o = new VMenuGroup ($id, __CLASS__);
 			$o->_tagdiv = Tag::_new("div");
-			$o->_tagdiv->css()->set("fret-vmenu-group");
+			$o->_tagdiv->setClass("fret-vmenu-group");
 			$o->_tagdiv->set("id",$id);
 
 			$o->_tagoption = Tag::_new("a");
@@ -22,7 +22,7 @@
 			// $o->_tagoption->set("id",$id);
 
 			$o->_tagframe = Tag::_new("div");
-			$o->_tagframe->css()->set("fret-vmenu-group-frame");
+			$o->_tagframe->setClass("fret-vmenu-group-frame");
 			$o->_tagframe->set("id",$id."Frame");
 
 			$o->_tagdiv->add($o->_tagoption);

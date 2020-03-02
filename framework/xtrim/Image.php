@@ -10,7 +10,7 @@
         static function _new( string $id ) : AbstractContainer {
 			$o = new Image($id, __CLASS__);
 			$o->_tagimage = Tag::_new("img");
-			$o->_tagimage->css()->set("fret-image");
+			$o->_tagimage->setClass("fret-image");
 			$o->setRootTag( $o->_tagimage );
 			return $o;
         }

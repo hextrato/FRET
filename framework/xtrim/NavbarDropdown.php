@@ -14,12 +14,12 @@
         static function _new( string $id ) : AbstractContainer {
 			$o = new NavbarDropdown($id, __CLASS__);
 			$o->_tagoption = Tag::_new("li");
-			$o->_tagoption->css()->set(["fret-navbar-option","nav-item","dropdown","active"]);
+			$o->_tagoption->setClass(["fret-navbar-option","nav-item","dropdown","active"]);
 			$o->setRootTag( $o->_tagoption );
 			$o->setInnerChildren( $o->_tagoption );
 
 			$o->_xlink = Link::_new($id);
-			$o->_xlink->tagLink()->css()->set(["nav-link","dropdown-toggle"]);
+			$o->_xlink->tagLink()->setClass(["nav-link","dropdown-toggle"]);
 			$o->_xlink->tagLink()
 				//->set("role","button")
 				->set("data-toggle","dropdown")
@@ -30,7 +30,7 @@
 			$o->add( $o->_xlink );
 
 			$o->_tagdropdown = Tag::_new("div");
-			$o->_tagdropdown->css()->set(["fret-navbar-dropdown","dropdown-menu"]);
+			$o->_tagdropdown->setClass(["fret-navbar-dropdown","dropdown-menu"]);
 			$o->_tagdropdown->set("aria-labelledby",$id);
 
 			$o->_tagoption->add( $o->_tagdropdown );
@@ -49,7 +49,7 @@
 
 		function addOption (string $caption, string $url) {
 			$option = Tag::_new("a");
-			$option->css()->set("dropdown-item");
+			$option->setClass("dropdown-item");
 			$option->set("href",$url);
 			$option->setInnerHtml($caption);
 			$this->_tagdropdown->add($option);
@@ -57,7 +57,7 @@
 		}
 		function addDivider () {
 			$divider = Tag::_new("div");
-			$divider->css()->set("dropdown-divider");
+			$divider->setClass("dropdown-divider");
 			$this->_tagdropdown->add($divider);
 			return $this;
 		}

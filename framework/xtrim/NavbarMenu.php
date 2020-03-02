@@ -23,7 +23,7 @@
 			$o->setRootTag( $o->tagVirtual() );
 			
 			$o->_tagbutton = Tag::_new("button");
-			$o->_tagbutton->css()->set("navbar-toggler");
+			$o->_tagbutton->setClass("navbar-toggler");
 			$o->_tagbutton
 				->set("type","button")
 				->set("data-toggle","collapse")
@@ -33,15 +33,15 @@
 				->set("aria-label","Toggle navigation")
 			;
 			$o->_tagspan = Tag::_new("span");
-			$o->_tagspan->css()->set("navbar-toggler-icon");
+			$o->_tagspan->setClass("navbar-toggler-icon");
 			$o->_tagbutton->add($o->_tagspan);
 
 			$o->_tagframe = Tag::_new("div");
 			$o->_tagframe->set("id",$id);
-			$o->_tagframe->css()->set(["fret-navbar-menu","collapse","navbar-collapse"]);
+			$o->_tagframe->setClass(["fret-navbar-menu","collapse","navbar-collapse"]);
 		
 			$o->_tagmenu = Tag::_new("ul");
-			$o->_tagmenu->css()->set(["navbar-nav","mr-auto"]);
+			$o->_tagmenu->setClass(["navbar-nav","mr-auto"]);
 			$o->_tagframe->add($o->_tagmenu);
 
 			$o->_tagvirtual

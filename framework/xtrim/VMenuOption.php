@@ -12,7 +12,7 @@
         static function _new( string $id ) : AbstractContainer {
 			$o = new VMenuOption ($id, __CLASS__);
 			$o->_tagdiv = Tag::_new("div");
-			$o->_tagdiv->css()->set("fret-vmenu-option");
+			$o->_tagdiv->setClass("fret-vmenu-option");
 			$o->_tagdiv->set("id",$id);
 
 			$o->_tagoption = Tag::_new("a");

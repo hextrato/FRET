@@ -10,7 +10,7 @@
         static function _new( string $id ) : AbstractContainer {
 			$o = new VMenu ($id, __CLASS__);
 			$o->_tagdiv = Tag::_new("div");
-			$o->_tagdiv->css()->set("fret-vmenu");
+			$o->_tagdiv->setClass("fret-vmenu");
 			$o->_tagdiv->set("id",$id);
 
 			$o->setRootTag( $o->tagDiv() );

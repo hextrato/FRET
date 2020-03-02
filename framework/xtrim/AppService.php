@@ -66,7 +66,7 @@
 		
 		function setClass( string $css ) {
 			parent::setClass( $css );
-			$this->_tagbody->css()->set( $css."_".ucfirst($this->_tagbody->getTAG()) );
+			$this->_tagbody->setClass( $css."_".ucfirst($this->_tagbody->getTAG()) );
 			return $this;
 		}
 		

@@ -10,7 +10,7 @@
         static function _new( string $id ) : AbstractContainer {
 			$o = new Link($id, __CLASS__);
 			$o->_taglink = Tag::_new("a",$id);
-			$o->_taglink->css()->set("fret-link");
+			$o->_taglink->setClass("fret-link");
 			$o->setRootTag( $o->_taglink );
 			$o->setInnerChildren( $o->_taglink );
 			return $o;

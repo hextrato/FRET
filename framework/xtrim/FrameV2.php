@@ -21,15 +21,15 @@
 			$id = "Fret2V";
 			$o = new FrameV2 ($id, __CLASS__);
 			$o->_tagmain = Tag::_new("div");
-			$o->_tagmain->css()->set("fret-frame2v");
+			$o->_tagmain->setClass("fret-frame2v");
 			$o->_tagmain->set("id",$id);
 
 			$o->_tagleft = Tag::_new("div");
-			$o->_tagleft->css()->set("fret-frame2v-left");
+			$o->_tagleft->setClass("fret-frame2v-left");
 			$o->_tagleft->set("id",$id."Left");
 
 			$o->_tagright = Tag::_new("div");
-			$o->_tagright->css()->set("fret-frame2v-right");
+			$o->_tagright->setClass("fret-frame2v-right");
 			$o->_tagright->set("id",$id."Right");
 
 			$o->_tagmain

@@ -33,12 +33,22 @@
 		private $_CLASS = null;
 		private $_STYLE = null;
 
-		function css() {
+		private function css() {
 			return $this->_CLASS;
 		}
 
 		function setClass($classes) {
-			$this->_CLASS->set($classes);
+			$this->_CLASS->add($classes);
+			return $this;
+		}
+		
+		private function addClass($classes) {
+			$this->_CLASS->add($classes);
+			return $this;
+		}
+		
+		function unsetClass($classes) {
+			$this->_CLASS->del($classes);
 			return $this;
 		}
 		

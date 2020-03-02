@@ -15,11 +15,11 @@
 			$o = new CarouselItem ($id, __CLASS__);
 
 			$o->_tagframe = Tag::_new("div",$id);
-			$o->_tagframe->css()->set(["carousel-item"]);
+			$o->_tagframe->setClass(["carousel-item"]);
 			$o->_tagframe->set("data-interval","5000");
 
 			$o->_tagcaption = Tag::_new("div");
-			$o->_tagcaption->css()->set(["carousel-caption"]);
+			$o->_tagcaption->setClass(["carousel-caption"]);
 
 			$o->_tagimage = Tag::_new("img");
 			

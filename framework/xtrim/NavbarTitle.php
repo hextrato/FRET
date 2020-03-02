@@ -10,7 +10,7 @@
         static function _new( string $id ) : AbstractContainer {
 			$o = new NavbarTitle($id, __CLASS__);
 			$o->_tagtitle = Tag::_new("div");
-			$o->_tagtitle->css()->set("fret-navbar-title");
+			$o->_tagtitle->setClass("fret-navbar-title");
 			$o->setRootTag( $o->tagTitle() );
 			return $o;
         }

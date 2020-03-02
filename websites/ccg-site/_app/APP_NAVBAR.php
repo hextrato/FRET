@@ -19,7 +19,7 @@
 	$appMainTopLogoLink = \fret\xtrim\Link::_new("appMainTopLogoLink");
 	$appMainTopLogoLink->setURL($_BASE_);
 	$appMainTopLogoLink->add($appMainTopLogo);
-	$appMainTopLogoLink->tagLink()->css()->add(["navbar-brand"]);
+	$appMainTopLogoLink->tagLink()->setClass(["navbar-brand"]);
 	
 	$appMainNavbarMenu = \fret\xtrim\NavbarMenu::_new("appMainNavbarMenu");
 	$appMainNavbarMenu
