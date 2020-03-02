@@ -24,7 +24,7 @@
 			$o->_taglink->set("data-theme","light");
 			$o->_taglink->set("data-link-color","#2B7BB9");
 			$o->_taglink->set("href","https://twitter.com/cogcomp?ref_src=twsrc%5Etfw");
-			$o->_taglink->setInnerHtml("Tweets by cogcomp");
+			$o->_taglink->setInnerContent("Tweets by cogcomp");
 
 			$o->_tagscript = Tag::_new("script");
 			$o->_tagscript->set("async","");

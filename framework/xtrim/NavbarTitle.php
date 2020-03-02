@@ -16,7 +16,7 @@
         }
 
 		function setTitle( string $title ) { 
-			$this->tagTitle()->setInnerHtml($title);
+			$this->tagTitle()->setInnerContent($title);
 			return $this;
 		}
 

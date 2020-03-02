@@ -30,17 +30,17 @@
 			;
 
 			$o->_tagtitle = Tag::_new("virtual")
-				->setInnerHtml("Headline")
+				->setInnerContent("Headline")
 			;
 
 			$o->_taghline = Tag::_new("h5")
-				->setInnerHtml("")
+				->setInnerContent("")
 				->add($o->_tagimage)
 				->add($o->_tagtitle)
 			;
 
 			$o->_tagintro = Tag::_new("p")
-				->setInnerHtml("Intro...")
+				->setInnerContent("Intro...")
 			;
 
 			$o->_tagframe
@@ -53,11 +53,11 @@
         }
 
 		function setTitle($title) {
-			$this->tagTitle()->setInnerHtml($title);
+			$this->tagTitle()->setInnerContent($title);
 			return $this;
 		}
 		function setIntro($intro) {
-			$this->tagIntro()->setInnerHtml($intro);
+			$this->tagIntro()->setInnerContent($intro);
 			return $this;
 		}
     }

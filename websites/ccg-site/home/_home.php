@@ -18,13 +18,13 @@
 	$appCarouselItem1->setImage($_BASE_."_img/carousel-1.jpg");
 	$appCarouselItem1->tagCaption()
 		->add(
-			\fret\xtrim\Tag::_new("h5")->setInnerHtml("Cognitive Computation Group")
+			\fret\xtrim\Tag::_new("h5")->setInnerContent("Cognitive Computation Group")
 		)
 		->add(
-			\fret\xtrim\Tag::_new("virtual")->setInnerHtml("Department of Computer and Information Science")
+			\fret\xtrim\Tag::_new("virtual")->setInnerContent("Department of Computer and Information Science")
 		)
 		->add(
-			\fret\xtrim\Tag::_new("br")->setInnerHtml("University of Pennsylvania")
+			\fret\xtrim\Tag::_new("br")->setInnerContent("University of Pennsylvania")
 		)
 	;
 	$appCarouselItem1->tagFrame()->setClass("active");
@@ -33,7 +33,7 @@
 	$appCarouselItem2->setImage($_BASE_."_img/carousel-2.jpg");
 	$appCarouselItem2->tagCaption()
 		->add(
-			\fret\xtrim\Tag::_new("h5")->setInnerHtml("Research")
+			\fret\xtrim\Tag::_new("h5")->setInnerContent("Research")
 		)
 	;
 
@@ -41,7 +41,7 @@
 	$appCarouselItem3->setImage($_BASE_."_img/carousel-3.jpg");
 	$appCarouselItem3->tagCaption()
 		->add(
-			\fret\xtrim\Tag::_new("h5")->setInnerHtml("Publications")
+			\fret\xtrim\Tag::_new("h5")->setInnerContent("Publications")
 		)
 	;
 
@@ -49,7 +49,7 @@
 	$appCarouselItem4->setImage($_BASE_."_img/carousel-4.jpg");
 	$appCarouselItem4->tagCaption()
 		->add(
-			\fret\xtrim\Tag::_new("h5")->setInnerHtml("Demos")
+			\fret\xtrim\Tag::_new("h5")->setInnerContent("Demos")
 		)
 	;
 
@@ -67,23 +67,25 @@
 
 	$FWS->add ( $appMain );
 
+	$ccgName = 	\fret\xtrim\Tag::_new("h3")
+				->setInnerContent("Cognitive Computation Group @ U. Penn");
+
 	$appCCG = \fret\xtrim\Infobox::_new("appMainCCG");
 	$appCCG->tagFrame()
 		->add (
-			\fret\xtrim\Tag::_new("h3")
-				->setInnerHtml("Cognitive Computation Group @ U. Penn")
+			$ccgName
 		)
 		->add (
 			\fret\xtrim\Tag::_new("p")
-				->setInnerHtml("Our research focuses on the computational foundations of intelligent behavior. We develop theories and systems pertaining to intelligent behavior using a unified methodology - at the heart of which is the idea that learning has a central role in intelligence.")
+				->setInnerContent("Our research focuses on the computational foundations of intelligent behavior. We develop theories and systems pertaining to intelligent behavior using a unified methodology - at the heart of which is the idea that learning has a central role in intelligence.")
 		)
 		->add (
 			\fret\xtrim\Tag::_new("p")
-				->setInnerHtml("Our work spans several aspects of this problem -- from theoretical questions in machine learning, knowledge representation and reasoning to experimental paradigms and large scale system development -- and draws on methods from theoretical computer science, probability and statistics, artificial intelligence, linguistics and experimental computer science.")
+				->setInnerContent("Our work spans several aspects of this problem -- from theoretical questions in machine learning, knowledge representation and reasoning to experimental paradigms and large scale system development -- and draws on methods from theoretical computer science, probability and statistics, artificial intelligence, linguistics and experimental computer science.")
 		)
 		->add (
 			\fret\xtrim\Tag::_new("p")
-				->setInnerHtml("Check out further details about our:")
+				->setInnerContent("Check out further details about our:")
 		)
 		->add (
 			\fret\xtrim\Tag::_new("ul")
@@ -91,7 +93,7 @@
 					\fret\xtrim\Tag::_new("li")
 						->add (
 							\fret\xtrim\Tag::_new("a")
-								->setInnerHtml("Software")
+								->setInnerContent("Software")
 								->set("href",$_BASE_."Software/")
 						)
 				)
@@ -99,7 +101,7 @@
 					\fret\xtrim\Tag::_new("li")
 						->add (
 							\fret\xtrim\Tag::_new("a")
-								->setInnerHtml("Demos")
+								->setInnerContent("Demos")
 								->set("href",$_BASE_."Demos/")
 						)
 				)
@@ -107,7 +109,7 @@
 					\fret\xtrim\Tag::_new("li")
 						->add (
 							\fret\xtrim\Tag::_new("a")
-								->setInnerHtml("Publications")
+								->setInnerContent("Publications")
 								->set("href",$_BASE_."Publication/")
 						)
 				)
@@ -115,13 +117,21 @@
 					\fret\xtrim\Tag::_new("li")
 						->add (
 							\fret\xtrim\Tag::_new("a")
-								->setInnerHtml("GitHub Repositories")
+								->setInnerContent("GitHub Repositories")
 								->set("href","https://cogcomp.github.io/CCG")
 								->set("target","_blank")
 						)
 				)
 		)
 	;
+	
+	$appCCG->tagFrame()
+		->add (
+			$ccgName
+		)
+	;
+
+
 	$appMain->add ( $appCCG );
 
 	$news_1=\fret\xtrim\NewsHeadline::_new("News1")
@@ -150,6 +160,10 @@
 		->add ( $news_2	)
 		->add ( $news_3	)
 	;
+	
+	//$appNews->add ( $news_1	);
+	//$appCCG->tagFrame()->add( $news_1	);
+	
 	$appMain->add ( $appNews );
 	
 	$appStats = \fret\xtrim\Infobox::_new("appMainStats");
@@ -170,19 +184,19 @@
 							\fret\xtrim\Tag::_new("g")
 								->setClass(["y","axis"])
 						)
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x", "19.5")->set("y","212.5")->setInnerHtml("10") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x", "44.5")->set("y","201.25")->setInnerHtml("13") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x", "69.5")->set("y","193.75")->setInnerHtml("15") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x", "94.5")->set("y","190")->setInnerHtml("16") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","119.5")->set("y","175")->setInnerHtml("20") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","144.5")->set("y","156.25")->setInnerHtml("25") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","169.5")->set("y","148.75")->setInnerHtml("27") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","194.5")->set("y","115")->setInnerHtml("36") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","219.5")->set("y","70.00000000000003")->setInnerHtml("48") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","244.5")->set("y","28.75")->setInnerHtml("59") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","269.5")->set("y","13.75")->setInnerHtml("63") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","294.5")->set("y","6.250000000000028")->setInnerHtml("65") )
-						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","319.5")->set("y","-5")->setInnerHtml("68") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x", "19.5")->set("y","212.5")->setInnerContent("10") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x", "44.5")->set("y","201.25")->setInnerContent("13") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x", "69.5")->set("y","193.75")->setInnerContent("15") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x", "94.5")->set("y","190")->setInnerContent("16") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","119.5")->set("y","175")->setInnerContent("20") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","144.5")->set("y","156.25")->setInnerContent("25") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","169.5")->set("y","148.75")->setInnerContent("27") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","194.5")->set("y","115")->setInnerContent("36") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","219.5")->set("y","70.00000000000003")->setInnerContent("48") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","244.5")->set("y","28.75")->setInnerContent("59") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","269.5")->set("y","13.75")->setInnerContent("63") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","294.5")->set("y","6.250000000000028")->setInnerContent("65") )
+						->add ( \fret\xtrim\Tag::_new("text")->setClass(["bar"])->set("text-anchor","middle")->set("x","319.5")->set("y","-5")->setInnerContent("68") )
 						
 				)
 		)

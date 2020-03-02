@@ -33,7 +33,7 @@
 			$o->_tagbutton->setClass(["btn","btn-outline-success","my-2","my-sm-0"]);
 			$o->_tagbutton
 				->set("type","submit")
-				->setInnerHtml("Search")
+				->setInnerContent("Search")
 			;
 			
 			$o->_tagform->add($o->_taginput);

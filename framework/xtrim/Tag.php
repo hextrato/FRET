@@ -27,6 +27,7 @@
 		private $_INNER_HTML_BEFORE_CHILDREN = "";
 		private $_INNER_HTML_AFTER_CHILDREN = "";
 
+		private $_PARENT = null;
 		private $_CHILDREN = array();
 		private $_INNER_CONTAINER = null;
 
@@ -64,7 +65,31 @@
         function getChildren() { 
 			return $this->_CHILDREN; 
 		}
-                  
+
+        function removeChild($child) { 
+			if ( ($key = array_search($child, $this->_CHILDREN, TRUE )) !== FALSE ) {
+				unset( $this->_CHILDREN[$key] );
+				$this->_CHILDREN = array_values($this->_CHILDREN);
+			}
+			return $this; 
+		}
+
+		function setParent(Tag $parent) : Tag {
+			$this->_PARENT = $parent;
+            return $this;
+		}
+		
+		function getParent() : Tag {
+			if ( is_null($this->_PARENT) )
+				return $this;
+			else
+				return $this->_PARENT;
+		}
+		
+		function hasParent() : bool {
+			return ( ! is_null($this->_PARENT) );
+		}
+		
         function setInnerContainer($parent) { 
 			if ($this->_TAG == "empty")
 				$this->_INNER_CONTAINER = $parent; 
@@ -119,7 +144,11 @@
 		}
 
 		function add ( Tag $child ) : Tag {
+			if ($child->hasParent()) {
+				$child->getParent()->removeChild($child);
+			}
 			$this->_CHILDREN[] = $child;
+			$child->setParent($this);
 			return $this;
 		}
 
@@ -132,16 +161,16 @@
             return $this;
         }
 
-        function setInnerHtml ( string $value ) : Tag {
-			return $this->setInnerHtmlBefore($value);
+        function setInnerContent ( string $value ) : Tag {
+			return $this->setInnerContentBefore($value);
 		}
 
-        function setInnerHtmlBefore ( string $value ) : Tag {
+        function setInnerContentBefore ( string $value ) : Tag {
 			$this->_INNER_HTML_BEFORE_CHILDREN = $value;
 			return $this;
 		}
 
-        function setInnerHtmlAfter ( string $value ) : Tag {
+        function setInnerContentAfter ( string $value ) : Tag {
 			$this->_INNER_HTML_AFTER_CHILDREN = $value;
 			return $this;
 		}
@@ -151,10 +180,10 @@
 			return $this;
 		}
 
-        function getInnerHtmlBefore ( ) : string {
+        function getInnerContentBefore ( ) : string {
 			return $this->_INNER_HTML_BEFORE_CHILDREN;
 		}
-        function getInnerHtmlAfter ( ) : string {
+        function getInnerContentAfter ( ) : string {
 			return $this->_INNER_HTML_AFTER_CHILDREN;
 		}
 

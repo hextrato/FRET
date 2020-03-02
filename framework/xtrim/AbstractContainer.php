@@ -96,8 +96,8 @@
 			return $this;
 		}
 		
-        function setInnerHtml ( string $value ) : AbstractContainer {
-			$this->_ROOT_TAG->setInnerHtml($value);
+        function setInnerContent ( string $value ) : AbstractContainer {
+			$this->_ROOT_TAG->setInnerContent($value);
 			return $this;
 		}
 		

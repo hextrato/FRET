@@ -34,7 +34,7 @@
 
 		/*
 		function setCaption ($caption) {
-			$this->_tagcaption->setInnerHtml($caption);
+			$this->_tagcaption->setInnerContent($caption);
 			return $this;
 		}
 
