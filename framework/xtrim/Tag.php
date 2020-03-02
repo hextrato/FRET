@@ -37,6 +37,10 @@
 			return $this->_CLASS;
 		}
 
+		private function style() {
+			return $this->_STYLE;
+		}
+
 		function setClass($classes) {
 			$this->_CLASS->add($classes);
 			return $this;
@@ -51,6 +55,11 @@
 			$this->_CLASS->del($classes);
 			return $this;
 		}
+
+        function setStyle ( string $property , string $value ) { 
+            $this->_STYLE->set($property , $value); 
+            return $this;
+        }
 		
         function getChildren() { 
 			return $this->_CHILDREN; 
@@ -95,6 +104,7 @@
 				$c->_ID = $id;
 				$c->_TAG = $tag;
 				$c->_CLASS = new \fret\core\BaseList;
+				$c->_STYLE = new \fret\core\BaseProps;
 				$c->_XTRIM_TEMPLATE = self::getValidTemplate($tag);
 				if ($c->_XTRIM_TEMPLATE == "") $c->_XTRIM_TEMPLATE = "default";
 			}
