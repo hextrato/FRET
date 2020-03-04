@@ -52,34 +52,12 @@
 
 
 
-.fret-vmenu {
-	background-color: #D8D8F8; 
-	height: 100%; 
+
+
+
+.fret-frame {
 }
 
-.fret-vmenu-group {
-	background-color: #E8E8F8; 
-	font-weight: bold; 
-	border: 1px green solid;
-	margin: 4px 4px 4px 4px;
-	max-width: 100%; 
-}
-
-.fret-vmenu-option {
-	background-color: #E8E8F8; 
-	border: 1px yellow solid;
-	margin: 4px 4px 4px 16px;
-	max-width: 100%; 
-}
-
-.fret-vmenu-option > a {
-	color: #804040; 
-}
-.fret-vmenu-option > a:hover {
-	color: #800000; 
-	font-weight: bold; 
-	cursor:pointer;
-}
 
 
 
@@ -89,12 +67,15 @@
 }
 
 
+
+
+
 .fret-frame2v {
     display: flex;
     height: 100%;
     width: 100%;
-    border: 0px yellow solid;
     margin: 0 auto;	
+    _border: 0px yellow solid;
 }
 
 .fret-frame2v  > div {
@@ -103,19 +84,69 @@
 
 .fret-frame2v-left {
 	float:left;  
-	background-color:white; 
 	width:256px; 
 	height:100%; 
-    border-right: 2px light	gray solid;
+	background-color:#F0F0F0; 
+    border-right: 2px lightgrey solid;
+    border-top: 2px lightgrey solid;
 }
 
 .fret-frame2v-right {
     bottom: 0;
 	float:right; 
-	background-color:white; 
 	width:100%; 
 	min-height:100%; 
+	_background-color:white; 
 }
+
+
+
+
+
+
+
+
+
+.fret-vmenu {
+	overflow: hidden;
+	_height: 100%; 
+	_border: 1px solid #D0D0D0;
+}
+
+.fret-vmenu-group {
+	margin: 4px 4px 4px 8px;
+	max-width: 100%; 
+	border-bottom: 1px solid #C0C0C0;
+	_font-weight: bold; 
+}
+
+.fret-vmenu-group > a {
+	color: #8080C0;
+}
+.fret-vmenu-group > a:hover {
+	color: #4040C0;
+	text-decoration: none;
+	cursor:pointer;
+}
+
+.fret-vmenu-option {
+	margin: 4px 4px 4px 16px;
+	max-width: 100%; 
+	_font-weight: bold; 
+}
+
+.fret-vmenu-option > a {
+	color: #606060; 
+}
+.fret-vmenu-option > a:hover {
+	color: #404040; 
+	cursor:pointer;
+	text-decoration: none;
+	font-weight: bold; 
+}
+
+
+
 
 
 

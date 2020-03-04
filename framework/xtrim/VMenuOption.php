@@ -1,7 +1,7 @@
 <?
     namespace fret\xtrim;
  
-    class VMenuOption extends AbstractContainer {
+    class VMenuOption extends _Container {
 
 		private $_tagdiv;
 		private $_tagoption;
@@ -9,13 +9,14 @@
 		function tagDiv() {return $this->_tagdiv; }
 		function tagOption() {return $this->_tagoption; }
 		
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new VMenuOption ($id, __CLASS__);
-			$o->_tagdiv = Tag::_new("div");
+			
+			$o->_tagdiv = $o->tag("div"); // Tag::_new("div");
 			$o->_tagdiv->setClass("fret-vmenu-option");
 			$o->_tagdiv->set("id",$id);
 
-			$o->_tagoption = Tag::_new("a");
+			$o->_tagoption = $o->tag("a"); // Tag::_new("a");
 			// $o->_tagoption->set("id",$id);
 
 			$o->_tagdiv->add($o->_tagoption);

@@ -6,7 +6,17 @@
 	$myAppLeftMenu
 		->add (
 			\fret\xtrim\VMenuGroup::_new("G0")
-				->setOption("Basic Annotators")
+			->disableHide()
+			->add(
+				\fret\xtrim\TitleH5::_new("myAppLeftMenuTitle")
+				->setTitle("CCG Demos")
+			)
+		)
+		->add (
+			\fret\xtrim\VMenuGroup::_new("G0")
+				->setOption("Annotators")
+				//->hide()
+				->disableHide()
 				->add (
 					\fret\xtrim\VMenuOption::_new("a")
 						->setOption("CogComp-NLP")
@@ -22,7 +32,8 @@
 		->add (
 			\fret\xtrim\VMenuGroup::_new("G1")
 				->setOption("Temporal")
-				->hide()
+				//->hide()
+				->disableHide()
 				->add (
 					\fret\xtrim\VMenuOption::_new("d")
 						->setOption("MC-TACO")
@@ -32,7 +43,8 @@
 		->add (
 			\fret\xtrim\VMenuGroup::_new("G2")
 				->setOption("Query/Answer")
-				->hide()
+				//->hide()
+				->disableHide()
 				->add (
 					\fret\xtrim\VMenuOption::_new("e")
 						->setOption("QuASE")

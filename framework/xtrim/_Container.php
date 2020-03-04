@@ -1,21 +1,28 @@
 <?
     namespace fret\xtrim;
  
-    abstract class AbstractContainer { // extends \fret\core\BaseProps {
+    abstract class _Container { 
 
 		private $_ID = "";
 		private $_INNER_HTML_BEFORE = "";
 		private $_INNER_HTML_AFTER = "";
 		private $_XTRIM_TEMPLATE = "";
+
+		private $_PARENT = null;
          
         private $_CHILDREN = array();
         private $_ROOT_TAG = null;
         private $_CLASS = null;
 
-		private $_xinner;
+		private $_xinners = array();
+		private $_xinner = null;
+		
 		function xinner() { return $this->_xinner; }
 		
 		function setInnerChildren( Tag $tag ) {
+			$this->_xinner = Tag::_new("empty"); // $this->tag("empty"); // Tag::_new("empty");
+			$this->_xinner->setInnerContainer($this);
+			$this->_xinners[] = $this->_xinner;
 			$tag->add($this->_xinner);
 			return $this;
 		}
@@ -25,11 +32,38 @@
 			return $this;
 		}
 		
+		function tag(string $tag, string $id = "") : Tag {
+			return 
+				Tag::_new($tag,$id)
+					->setContainer($this)
+			;
+		}
+
+		private function setParent(_Container $parent) : _Container {
+			$this->_PARENT = $parent;
+            return $this;
+		}
+		function parent() : _Container {
+			if ( is_null($this->_PARENT) )
+				return $this;
+			else
+				return $this->_PARENT;
+		}
+		function hasParent() : bool {
+			return ( ! is_null($this->_PARENT) );
+		}
+
+        function removeChild($child) { 
+			if ( ($key = array_search($child, $this->_CHILDREN, TRUE )) !== FALSE ) {
+				unset( $this->_CHILDREN[$key] );
+				$this->_CHILDREN = array_values($this->_CHILDREN);
+			}
+			return $this; 
+		}
+				
         function __construct($id, $class) {
 			$this->_ID = $id;
 			$this->_XTRIM_TEMPLATE = str_replace("fret\\xtrim\\","",__CLASS__);
-			$this->_xinner = Tag::_new("empty");
-			$this->_xinner->setInnerContainer($this);
             return $this;
 			/*
 			$this->_name = $containerName;
@@ -60,8 +94,8 @@
 			*/
         }
 
-        static function _new ( string $id ) : AbstractContainer {
-			return new AbstractContainer($id, __CLASS__);
+        static function _new ( string $id ) : _Container {
+			return new _Container($id, __CLASS__);
 		}
 
         function getChildren() { 
@@ -74,7 +108,7 @@
 		}
 
 		/*
-        function set ( string $property , string $value ) : AbstractContainer {
+        function set ( string $property , string $value ) : _Container {
 			$property = strtolower ( $property );
 			if ($property == "id") $this->_ID = $value; else
 			if ($property == "html") $this->_INNER_HTML = $value; else
@@ -90,13 +124,16 @@
         }
 		*/
 
-		function add ( AbstractContainer $container ) : AbstractContainer {
-			// var_dump($container);
-			$this->_CHILDREN[] = $container;
+		function add ( _Container $childContainer ) : _Container {
+			if ($childContainer->hasParent()) {
+				$childContainer->getParent()->removeChild($childContainer);
+			}
+			$this->_CHILDREN[] = $childContainer;
+			$childContainer->setParent($this);
 			return $this;
 		}
 		
-        function setInnerContent ( string $value ) : AbstractContainer {
+        function setInnerContent ( string $value ) : _Container {
 			$this->_ROOT_TAG->setInnerContent($value);
 			return $this;
 		}

@@ -1,7 +1,7 @@
 <?
     namespace fret\xtrim;
  
-    class NewsHeadline extends AbstractContainer {
+    class NewsHeadline extends _Container {
 
 		private $_tagframe;
 		private $_tagimage;
@@ -15,31 +15,31 @@
 		function tagTitle() {return $this->_tagtitle; }
 		function tagIntro() {return $this->_tagintro; }
 		
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new NewsHeadline ($id, __CLASS__);
-			$o->_tagframe = Tag::_new("div");
+			$o->_tagframe = $o->tag("div"); // Tag::_new("div");
 			$o->_tagframe->setClass(["inline","top"]);
 			$o->_tagframe->set("style","border: 0px solid #ddd; border-radius: 4px; margin: 32px; width: 30%; vertical-align: top; display: inline;");
 			
 			$o->setRootTag( $o->tagFrame() );
 			$o->setInnerChildren( $o->tagFrame() );
 
-			$o->_tagimage = Tag::_new("img")
+			$o->_tagimage = $o->tag("img") // Tag::_new("img")
 				->set("src",$GLOBALS["BASE_APP_RELATIVE_PATH"]."_img/icon_news.png")
 				->set("width","32px")
 			;
 
-			$o->_tagtitle = Tag::_new("virtual")
+			$o->_tagtitle = $o->tag("virtual") // Tag::_new("virtual")
 				->setInnerContent("Headline")
 			;
 
-			$o->_taghline = Tag::_new("h5")
+			$o->_taghline = $o->tag("h5") // Tag::_new("h5")
 				->setInnerContent("")
 				->add($o->_tagimage)
 				->add($o->_tagtitle)
 			;
 
-			$o->_tagintro = Tag::_new("p")
+			$o->_tagintro = $o->tag("p") // Tag::_new("p")
 				->setInnerContent("Intro...")
 			;
 

@@ -1,7 +1,7 @@
 <?
     namespace fret\xtrim;
  
-    class NavbarDropdown extends AbstractContainer {
+    class NavbarDropdown extends _Container {
 		
 		private $_tagoption;
 		private $_tagdropdown;
@@ -11,9 +11,9 @@
 		function tagDropdown() {return $this->_tagdropdown; }
 		function xLink() {return $this->_xlink; }
 
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new NavbarDropdown($id, __CLASS__);
-			$o->_tagoption = Tag::_new("li");
+			$o->_tagoption = $o->tag("li"); // Tag::_new("li");
 			$o->_tagoption->setClass(["fret-navbar-option","nav-item","dropdown","active"]);
 			$o->setRootTag( $o->_tagoption );
 			$o->setInnerChildren( $o->_tagoption );
@@ -29,7 +29,7 @@
 			;
 			$o->add( $o->_xlink );
 
-			$o->_tagdropdown = Tag::_new("div");
+			$o->_tagdropdown = $o->tag("div"); // Tag::_new("div");
 			$o->_tagdropdown->setClass(["fret-navbar-dropdown","dropdown-menu"]);
 			$o->_tagdropdown->set("aria-labelledby",$id);
 
@@ -48,7 +48,7 @@
 		}
 
 		function addOption (string $caption, string $url) {
-			$option = Tag::_new("a");
+			$option = $this->tag("a"); // Tag::_new("a");
 			$option->setClass("dropdown-item");
 			$option->set("href",$url);
 			$option->setInnerContent($caption);
@@ -56,7 +56,7 @@
 			return $this;
 		}
 		function addDivider () {
-			$divider = Tag::_new("div");
+			$divider = $this->tag("div"); // Tag::_new("div");
 			$divider->setClass("dropdown-divider");
 			$this->_tagdropdown->add($divider);
 			return $this;

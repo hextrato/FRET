@@ -1,7 +1,7 @@
 <?
     namespace fret\xtrim;
  
-    class CarouselItem extends AbstractContainer {
+    class CarouselItem extends _Container {
 
 		private $_tagframe;
 		private $_tagcaption;
@@ -11,17 +11,17 @@
 		function tagCaption() {return $this->_tagcaption; }
 		function tagImage() {return $this->_tagimage; }
 		
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new CarouselItem ($id, __CLASS__);
 
-			$o->_tagframe = Tag::_new("div",$id);
+			$o->_tagframe = $o->tag("div",$id); // Tag::_new("div",$id);
 			$o->_tagframe->setClass(["carousel-item"]);
 			$o->_tagframe->set("data-interval","5000");
 
-			$o->_tagcaption = Tag::_new("div");
+			$o->_tagcaption = $o->tag("div"); // Tag::_new("div");
 			$o->_tagcaption->setClass(["carousel-caption"]);
 
-			$o->_tagimage = Tag::_new("img");
+			$o->_tagimage = $o->tag("img"); // Tag::_new("img");
 			
 			$o->_tagframe->add($o->_tagimage);
 			$o->_tagframe->add($o->_tagcaption);

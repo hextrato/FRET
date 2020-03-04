@@ -1,15 +1,15 @@
 <?
     namespace fret\xtrim;
  
-    class Link extends AbstractContainer {
+    class Link extends _Container {
 		
 		private $_taglink;
 
 		function tagLink() {return $this->_taglink; }
 
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new Link($id, __CLASS__);
-			$o->_taglink = Tag::_new("a",$id);
+			$o->_taglink = $o->tag("a"); // Tag::_new("a",$id);
 			$o->_taglink->setClass("fret-link");
 			$o->setRootTag( $o->_taglink );
 			$o->setInnerChildren( $o->_taglink );
