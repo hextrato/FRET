@@ -1,7 +1,7 @@
 <?
     namespace fret\xtrim;
  
-    class AppService extends AbstractContainer {
+    class AppService extends _Container {
 		
 		private $_taghtml;
 		private $_taghead;
@@ -29,14 +29,15 @@
 		}
 
 		function addMeta ( $arrayProps ) {
-			$h = Tag::_new("meta");
+			$h = $this->tag("meta"); // Tag::_new("meta");
 			foreach($arrayProps as $prop => $value ) $h->set($prop,$value);
 			$this->_tagmeta->add($h);
 			return $this;
 		}
 
 		function addLink ( $href , $rel = "", $type = "" ) {
-			$h = Tag::_new("link")->set("href",$href);
+			$h = $this->tag("link") // Tag::_new("link")
+				->set("href",$href);
 			if ($rel <> "") $h->set("rel",$rel);
 			if ($type <> "") $h->set("type",$type);
 			$this->_taglink->add($h);
@@ -51,7 +52,8 @@
 		}
 		
 		function addScript ( $src , $charset = "" ) {
-			$h = Tag::_new("script")->set("src",$src);
+			$h = $this->tag("script") // Tag::_new("script")
+				->set("src",$src);
 			if ($charset <> "") $h->set("charset",$charset);
 			$this->_tagscript->add($h);
 			$this->_LAST_SCRIPT = $h;
@@ -70,16 +72,16 @@
 			return $this;
 		}
 		
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new AppService($id, __CLASS__);
 
-			$o->_taghtml 	= Tag::_new("html");
-			$o->_taghead 	= Tag::_new("head");
-			$o->_tagmeta 	= Tag::_new("virtual");
-			$o->_tagtitle 	= Tag::_new("title");
-			$o->_taglink 	= Tag::_new("virtual");
-			$o->_tagscript 	= Tag::_new("virtual");
-			$o->_tagbody 	= Tag::_new("body");
+			$o->_taghtml 	= $o->tag("html"); // Tag::_new("html");
+			$o->_taghead 	= $o->tag("head"); // Tag::_new("head");
+			$o->_tagmeta 	= $o->tag("virtual"); // Tag::_new("virtual");
+			$o->_tagtitle 	= $o->tag("title"); // Tag::_new("title");
+			$o->_taglink 	= $o->tag("virtual"); // Tag::_new("virtual");
+			$o->_tagscript 	= $o->tag("virtual"); // Tag::_new("virtual");
+			$o->_tagbody 	= $o->tag("body"); // Tag::_new("body");
 
 			$o->setInnerChildren( $o->tagBody() );
 			

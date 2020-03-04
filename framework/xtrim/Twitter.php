@@ -1,7 +1,7 @@
 <?
     namespace fret\xtrim;
  
-    class Twitter extends AbstractContainer {
+    class Twitter extends _Container {
 
 		private $_tagframe;
 		private $_taglink;
@@ -11,13 +11,13 @@
 		function tagLink() {return $this->_taglink; }
 		function tagScript() {return $this->_tagscript; }
 		
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new Twitter ($id, __CLASS__);
-			$o->_tagframe = Tag::_new("div");
+			$o->_tagframe = $o->tag("div"); // Tag::_new("div");
 			$o->_tagframe->setClass(["inline"]);
 			$o->_tagframe->set("style","border: 1px solid #ddd; margin: 8px; border-radius: 4px; margin-bottom: 10px;");
 			
-			$o->_taglink = Tag::_new("a");
+			$o->_taglink = $o->tag("a"); // Tag::_new("a");
 			$o->_taglink->setClass(["twitter-timeline"]);			
 			$o->_taglink->set("data-width","300");
 			$o->_taglink->set("data-height","500");
@@ -26,7 +26,7 @@
 			$o->_taglink->set("href","https://twitter.com/cogcomp?ref_src=twsrc%5Etfw");
 			$o->_taglink->setInnerContent("Tweets by cogcomp");
 
-			$o->_tagscript = Tag::_new("script");
+			$o->_tagscript = $o->tag("script"); // Tag::_new("script");
 			$o->_tagscript->set("async","");
 			$o->_tagscript->set("src","https://platform.twitter.com/widgets.js");
 			$o->_tagscript->set("charset","utf-8");

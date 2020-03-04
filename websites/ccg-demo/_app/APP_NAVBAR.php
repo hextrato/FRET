@@ -11,36 +11,8 @@
 	$myAppNavbarLogoLink->tagLink()->setClass(["navbar-brand"]);
 
 	$myAppNavbarTitle = \fret\xtrim\NavbarTitle::_new("myAppNavbarTitle")->setTitle("Cognitive Computation Group");
-	
-	/*
-	$myAppNavbarMenu = \fret\xtrim\NavbarMenu::_new("myAppNavbarMenu");
-	$myAppNavbarMenu
-		->add (
-			\fret\xtrim\NavbarOption::_new("myAppNavbarOptionHome")
-			->setCaption("Home")
-			->setURL($_BASE_) // ."Home/")
-		)
-		->add (
-			\fret\xtrim\NavbarDropdown::_new("myAppNavbarOptionAccount")
-			->setCaption("Account")
-			->addOption("Login",$_BASE_."Account/Login/")
-			->addDivider()
-			->addOption("Logout",$_BASE_."Account/Logout/")
-		)
-		->add (
-			\fret\xtrim\NavbarOption::_new("myAppNavbarOptionNews")
-			->setCaption("About")
-			->setURL($_BASE_."About/")
-		)
-	;
 
-	$myAppNavbarSearch = \fret\xtrim\NavbarSearch::_new("myAppNavbarSearch");
-	$myAppNavbarMenu->tagFrame()->add($myAppNavbarSearch->tagForm());
-	$myAppNavbarSearch->tagForm()->set("action",$_BASE_."Search/");
-	*/
-	
 	$myAppNavbar->add($myAppNavbarLogoLink);
-	// $myAppNavbar->add($myAppNavbarMenu);
 	$myAppNavbar->add($myAppNavbarTitle);
 
 ?>

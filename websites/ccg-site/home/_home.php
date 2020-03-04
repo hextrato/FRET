@@ -124,19 +124,21 @@
 				)
 		)
 	;
-	
+
+	/*
 	$appCCG->tagFrame()
 		->add (
 			$ccgName
 		)
 	;
+	*/
 
 
 	$appMain->add ( $appCCG );
 
 	$news_1=\fret\xtrim\NewsHeadline::_new("News1")
-				->setTitle("Postdoc Opportunity")
-				->setIntro("The Cognitive Computation Group is looking for a postdoctoral researcher in natural language understanding, machine learning, knowledge acquisition, and reasoning.");
+				->setTitle("Postdoc/PhD Opportunity")
+				->setIntro("The Cognitive Computation Group is constantly looking for postdoctoral researchers and/or PhD candidates in natural language understanding, machine learning, knowledge acquisition, and reasoning.");
 
 	$news_2=\fret\xtrim\NewsHeadline::_new("News2")
 				->setTitle("Curator Demo")

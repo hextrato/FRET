@@ -1,20 +1,20 @@
 <?
     namespace fret\xtrim;
  
-    class VMenu extends AbstractContainer {
+    class VMenu extends _Container {
 
-		private $_tagdiv;
+		private $_tagframe;
 
-		function tagDiv() {return $this->_tagdiv; }
+		function tagFrame() {return $this->_tagframe; }
 		
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new VMenu ($id, __CLASS__);
-			$o->_tagdiv = Tag::_new("div");
-			$o->_tagdiv->setClass("fret-vmenu");
-			$o->_tagdiv->set("id",$id);
+			$o->_tagframe = $o->tag("div"); // Tag::_new("div");
+			$o->_tagframe->setClass("fret-vmenu");
+			$o->_tagframe->set("id",$id);
 
-			$o->setRootTag( $o->tagDiv() );
-			$o->setInnerChildren( $o->tagDiv() );
+			$o->setRootTag( $o->tagFrame() );
+			$o->setInnerChildren( $o->tagFrame() );
   
 			return $o;
         }

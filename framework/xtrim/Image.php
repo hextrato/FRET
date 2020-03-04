@@ -1,15 +1,15 @@
 <?
     namespace fret\xtrim;
  
-    class Image extends AbstractContainer {
+    class Image extends _Container {
 		
 		private $_tagimage;
 
 		function tagImage() {return $this->_tagimage; }
 
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new Image($id, __CLASS__);
-			$o->_tagimage = Tag::_new("img");
+			$o->_tagimage = $o->tag("img",$id); // Tag::_new("img");
 			$o->_tagimage->setClass("fret-image");
 			$o->setRootTag( $o->_tagimage );
 			return $o;

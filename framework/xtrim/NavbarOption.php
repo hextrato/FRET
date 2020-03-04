@@ -1,7 +1,7 @@
 <?
     namespace fret\xtrim;
  
-    class NavbarOption extends AbstractContainer {
+    class NavbarOption extends _Container {
 		
 		private $_tagoption;
 		private $_xlink;
@@ -9,9 +9,9 @@
 		function tagOption() {return $this->_tagoption; }
 		function xLink() {return $this->_xlink; }
 
-        static function _new( string $id ) : AbstractContainer {
+        static function _new( string $id ) : _Container {
 			$o = new NavbarOption($id, __CLASS__);
-			$o->_tagoption = Tag::_new("li");
+			$o->_tagoption = $o->tag("li"); // Tag::_new("li");
 			$o->_tagoption->setClass(["fret-navbar-option","nav-item","active"]);
 			$o->setRootTag( $o->_tagoption );
 			$o->setInnerChildren( $o->_tagoption );

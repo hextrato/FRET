@@ -4,9 +4,9 @@
     class Tag extends \fret\core\BaseProps {
 
 		static private $VALID_TAG_TEMPLATES = array(
-			"fully" => array ("tags" => array("html","head","body","form","div","nav","button","ul","ol","li") , "template" => "Fully")
+			"fully" => array ("tags" => array("html","head","body","form","div","nav","button","a","ul","ol","li") , "template" => "Fully")
 			,
-			"linea" => array ("tags" => array("title","script","h1","h2","h3","h4","h5","a","span") , "template" => "Linea")
+			"linea" => array ("tags" => array("title","script","h1","h2","h3","h4","h5","span") , "template" => "Linea")
 			,
 			"isola" => array ("tags" => array("meta","link","p","br","img","input") , "template" => "Isola")
 			,
@@ -27,6 +27,7 @@
 		private $_INNER_HTML_BEFORE_CHILDREN = "";
 		private $_INNER_HTML_AFTER_CHILDREN = "";
 
+		private $_CONTAINER = null;
 		private $_PARENT = null;
 		private $_CHILDREN = array();
 		private $_INNER_CONTAINER = null;
@@ -74,12 +75,24 @@
 			return $this; 
 		}
 
-		function setParent(Tag $parent) : Tag {
+		function setContainer(_Container $parentContainer) : Tag {
+			$this->_CONTAINER = $parentContainer;
+            return $this;
+		}
+		
+		private function setParent(Tag $parent) : Tag {
 			$this->_PARENT = $parent;
             return $this;
 		}
 		
-		function getParent() : Tag {
+		function container() {
+			return $this->_CONTAINER;
+		}
+
+		//function parent() : Tag {
+		//	return $this->getParent();
+		//}
+		function parent() : Tag {
 			if ( is_null($this->_PARENT) )
 				return $this;
 			else
