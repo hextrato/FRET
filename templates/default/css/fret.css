@@ -136,13 +136,13 @@
 }
 
 .fret-vmenu-option > a {
-	color: #606060; 
+	color: #808080; 
 }
 .fret-vmenu-option > a:hover {
-	color: #404040; 
+	color: black; 
 	cursor:pointer;
 	text-decoration: none;
-	font-weight: bold; 
+	_font-weight: bold; 
 }
 
 

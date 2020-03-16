@@ -14,15 +14,18 @@
         private $_ROOT_TAG = null;
         private $_CLASS = null;
 
+        private $_WHERE_TO_ADD;
+
 		private $_xinners = array();
 		private $_xinner = null;
 		
 		function xinner() { return $this->_xinner; }
 		
-		function setInnerChildren( Tag $tag ) {
-			$this->_xinner = Tag::_new("empty"); // $this->tag("empty"); // Tag::_new("empty");
-			$this->_xinner->setInnerContainer($this);
-			$this->_xinners[] = $this->_xinner;
+		protected function setInnerChildren( Tag $tag ) {
+			$newTag  = Tag::_new("empty"); // $this->tag("empty"); // Tag::_new("empty");
+			$newTag ->setInnerContainer($this);
+			$this->_xinners[] = $newTag;
+			$this->_xinner = $newTag;
 			$tag->add($this->_xinner);
 			return $this;
 		}
@@ -64,6 +67,7 @@
         function __construct($id, $class) {
 			$this->_ID = $id;
 			$this->_XTRIM_TEMPLATE = str_replace("fret\\xtrim\\","",__CLASS__);
+			$this->_WHERE_TO_ADD = $this;
             return $this;
 			/*
 			$this->_name = $containerName;
@@ -128,8 +132,15 @@
 			if ($childContainer->hasParent()) {
 				$childContainer->getParent()->removeChild($childContainer);
 			}
-			$this->_CHILDREN[] = $childContainer;
-			$childContainer->setParent($this);
+			// $this->_CHILDREN[] = $childContainer;
+			$this->_WHERE_TO_ADD->_CHILDREN[] = $childContainer;
+			// $childContainer->setParent($this);
+			$childContainer->setParent($this->_WHERE_TO_ADD);
+			return $this;
+		}
+		
+		function whereToAdd ( _Container $container ) : _Container {
+			$this->_WHERE_TO_ADD = $container;
 			return $this;
 		}
 		
