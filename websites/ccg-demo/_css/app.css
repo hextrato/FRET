@@ -1,10 +1,10 @@
 #MyAppFrame {
 	border: 0px solid black;
+	height: 100%; 
+	width: 100%;
 	_position: absolute;
 	_margin: 0px;
 	_background-color: white;
-	height: 100%; 
-	width: 100%;
 }
 
 #MyAppFrameTop {
