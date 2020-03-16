@@ -4,7 +4,7 @@
     class Tag extends \fret\core\BaseProps {
 
 		static private $VALID_TAG_TEMPLATES = array(
-			"fully" => array ("tags" => array("html","head","body","form","div","nav","button","a","ul","ol","li") , "template" => "Fully")
+			"fully" => array ("tags" => array("html","head","body","form","div","nav","button","a","ul","ol","li","table","th","tr","td") , "template" => "Fully")
 			,
 			"linea" => array ("tags" => array("title","script","h1","h2","h3","h4","h5","span") , "template" => "Linea")
 			,
