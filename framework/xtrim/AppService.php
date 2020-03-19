@@ -82,9 +82,7 @@
 			$o->_taglink 	= $o->tag("virtual"); // Tag::_new("virtual");
 			$o->_tagscript 	= $o->tag("virtual"); // Tag::_new("virtual");
 			$o->_tagbody 	= $o->tag("body"); // Tag::_new("body");
-
-			$o->setInnerChildren( $o->tagBody() );
-			
+		
 			$o->_taghtml
 				-> add ( 
 					$o->_taghead
@@ -99,6 +97,9 @@
 			;
 			
 			$o->setRootTag( $o->_taghtml );
+			$o->setInnerTag( $o->_tagbody );
+			
+			//$o->setInnerChildren( $o->tagBody() );
 
 			return $o;
         }
