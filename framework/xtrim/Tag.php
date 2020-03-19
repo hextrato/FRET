@@ -12,7 +12,9 @@
 			,
 			"ctrls" => array ("tags" => array("virtual") , "template" => "Ctrls")
 			,
-			"xtrim" => array ("tags" => array("empty") , "template" => "Empty")
+			//"xtrim" => array ("tags" => array("empty") , "template" => "Empty")
+			//,
+			"inner" => array ("tags" => array("inner") , "template" => "Inner")
 			,
 			"error" => array ("tags" => array("error") , "template" => "Error")
 			,
@@ -30,7 +32,7 @@
 		private $_CONTAINER = null;
 		private $_PARENT = null;
 		private $_CHILDREN = array();
-		private $_INNER_CONTAINER = null;
+		// private $_INNER_CONTAINER = null;
 
 		private $_CLASS = null;
 		private $_STYLE = null;
@@ -103,6 +105,7 @@
 			return ( ! is_null($this->_PARENT) );
 		}
 		
+		/*
         function setInnerContainer($parent) { 
 			if ($this->_TAG == "empty")
 				$this->_INNER_CONTAINER = $parent; 
@@ -110,6 +113,7 @@
 				$this->_INNER_CONTAINER = $null; 
 			return $this;
 		}
+		*/
 
 		static function isValidTag( string $tag ) {
 			$tag = strtolower($tag);
@@ -162,6 +166,7 @@
 			}
 			$this->_CHILDREN[] = $child;
 			$child->setParent($this);
+			// echo "[".$this->getID()."<<".$child->getID()."]\n";
 			return $this;
 		}
 

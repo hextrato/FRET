@@ -12,22 +12,33 @@
          
         private $_CHILDREN = array();
         private $_ROOT_TAG = null;
+        private $_INNER_TAG = null;
         private $_CLASS = null;
 
         private $_WHERE_TO_ADD;
 
-		private $_xinners = array();
-		private $_xinner = null;
+		//private $_xinner_index = -1;
+		//private $_xinners = array();
+		//private $_xinner = null;
 		
-		function xinner() { return $this->_xinner; }
+		// function xinner() : Tag { return $this->_xinner; }
 		
 		protected function setInnerChildren( Tag $tag ) {
-			$newTag  = Tag::_new("empty"); // $this->tag("empty"); // Tag::_new("empty");
-			$newTag ->setInnerContainer($this);
-			$this->_xinners[] = $newTag;
-			$this->_xinner = $newTag;
-			$tag->add($this->_xinner);
+			return $this->setInnerTag($tag);
+			/*
+			$this->_xinner_index++;
+			// $newTag = Tag::_new("empty"); // $this->tag("empty"); // Tag::_new("empty");
+			// $this->_xinners[$this->_xinner_index] = Tag::_new("empty","empty");
+			$this->_xinners[$this->_xinner_index] = _Inner::_new("_inner");
+			// $newTag->setInnerContainer($this);
+			// $this->_xinners[$this->_xinner_index]->setInnerContainer($this->_WHERE_TO_ADD);
+			// $tag->setInnerContainer( $this->_xinners[$this->_xinner_index] );
+			// $this->_xinners[] = $newTag;
+			// $this->_xinner = $newTag;
+			$this->_xinner = $this->_xinners[$this->_xinner_index];
+			$tag->add($this->_xinner->tagInner());
 			return $this;
+			*/
 		}
 		
 		function setClass( string $cssClass ) {
@@ -35,15 +46,22 @@
 			return $this;
 		}
 		
+		function getID() {
+			return $this->_ID;
+		}
+		
 		function tag(string $tag, string $id = "") : Tag {
 			return 
 				Tag::_new($tag,$id)
-					->setContainer($this)
+					->setContainer($this->_WHERE_TO_ADD)
 			;
 		}
 
 		private function setParent(_Container $parent) : _Container {
 			$this->_PARENT = $parent;
+			if ($this->_PARENT != null && $this->_ROOT_TAG != null) {
+				$this->_PARENT->_INNER_TAG->add($this->_ROOT_TAG);
+			}
             return $this;
 		}
 		function parent() : _Container {
@@ -68,6 +86,7 @@
 			$this->_ID = $id;
 			$this->_XTRIM_TEMPLATE = str_replace("fret\\xtrim\\","",__CLASS__);
 			$this->_WHERE_TO_ADD = $this;
+			// $this->_xinner = $this;
             return $this;
 			/*
 			$this->_name = $containerName;
@@ -106,8 +125,16 @@
 			return $this->_CHILDREN; 
 		}
 
-        function setRootTag(Tag $tag) { 
+        function setRootTag(Tag $tag) {
 			$this->_ROOT_TAG = $tag; 
+			$this->_INNER_TAG = $tag; 
+			if ($this->_PARENT != null) {
+				$this->_PARENT->_INNER_TAG->add($tag);
+			}
+			return $this;
+		}
+        function setInnerTag(Tag $tag) {
+			$this->_INNER_TAG = $tag; 
 			return $this;
 		}
 
